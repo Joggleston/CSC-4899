@@ -1,10 +1,4 @@
 <template>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="login.css">
-        <title></title>
-    </head>
     <body>
         <!-- Login Buttons n stuff -->
         <!-- NOTES: will enable the form to send the data to something like google firebase-->
@@ -45,14 +39,6 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-h1 {
-  font-family: "Roboto", sans-serif;
-  display:  block;
-  margin: auto;
-  text-align: center;
-  padding-top: 4%;
-  font-size: 50px;
-}
 .login-page {
   width: 360px;
   padding: 5% 0 0;
@@ -140,10 +126,5 @@ h1 {
 }
 .container .info span .fa {
   color: #EF3B3A;
-}
-body {
-  background: rgb(141,194,111);
-  /*background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);*/
-  font-family: "Roboto", sans-serif;     
 }
 </style>

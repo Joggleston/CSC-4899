@@ -4,6 +4,7 @@
         <!-- NOTES: will enable the form to send the data to something like google firebase-->
         <div class="login-page">
             <div class="form">
+              <!-- subject to change -->
                 <form class="register-form" v-if="!isLoginShown">
                     <input type="text" placeholder="name"/>
                     <input type="password" placeholder="password"/>
@@ -11,6 +12,7 @@
                     <button>create</button>
                     <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
                 </form>
+
                 <form class="login-form" v-if="isLoginShown">
                     <input type="text" placeholder="username"/>
                     <input type="password" placeholder="password"/>

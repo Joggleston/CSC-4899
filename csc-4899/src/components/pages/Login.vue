@@ -4,21 +4,21 @@
         <!-- NOTES: will enable the form to send the data to something like google firebase-->
         <div class="login-page">
             <div class="form">
-                <form class="register-form">
+                <form class="register-form" v-if="!isLoginShown">
                     <input type="text" placeholder="name"/>
                     <input type="password" placeholder="password"/>
                     <input type="text" placeholder="email address"/>
                     <button>create</button>
-                    <p class="message">Already registered? <a href="#">Sign In</a></p>
+                    <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
                 </form>
-                <form class="login-form">
+                <form class="login-form" v-if="isLoginShown">
                     <input type="text" placeholder="username"/>
                     <input type="password" placeholder="password"/>
 
                     <!-- Temp rededirects to dashboard -->
                     <button><a href="" style="text-decoration: none;">login</a></button> 
 
-                    <p class="message">Not registered? <a href="#">Create an account</a></p>
+                    <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
                 </form>
             </div>
         </div>
@@ -27,13 +27,17 @@
 
 <script>
     export default {
-        
+      data() {
+        return {
+          isLoginShown: true
+        }
+      },
+
+      methods: {
+      }
+
     }
 
-    // basic jqueury for animation, will change animation to other code
-    // $('.message a').click(function(){
-    //     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    // });
 </script>
 
 <style>
@@ -91,9 +95,9 @@
   color: #4CAF50;
   text-decoration: none;
 }
-.form .register-form {
+/* .form .register-form {
   display: none;
-}
+} */
 .container {
   position: relative;
   z-index: 1;

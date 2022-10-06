@@ -5,22 +5,21 @@
         <div class="login-page">
             <div class="form">
               <!-- subject to change -->
-                <form class="register-form" v-if="!isLoginShown">
-                    <input type="text" placeholder="name"/>
-                    <input type="password" placeholder="password"/>
-                    <input type="text" placeholder="email address"/>
-                    <button>create</button>
-                    <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
+                <form class="register-form" v-if="!isLoginShown" @submit.prevent="register">
+                  <input type="email" placeholder="Email address..." v-model="registerEmail"/>
+                  <input type="password" placeholder="Password..." v-model="registerPassword"/>
+                  <button type="submit">create</button>
+                  <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
                 </form>
 
-                <form class="login-form" v-if="isLoginShown">
-                    <input type="text" placeholder="username"/>
-                    <input type="password" placeholder="password"/>
+                <form class="login-form" v-if="isLoginShown" @submit.prevent="login">
+                  <input type="email" placeholder="Email address..." v-model="loginEmail"/>
+                  <input type="password" placeholder="Password..." v-model="loginPassword"/>
 
-                    <!-- Temp rededirects to dashboard -->
-                    <button><a href="" style="text-decoration: none;">login</a></button> 
+                  <!-- Temp rededirects to dashboard -->
+                  <button type="submit"><a href="" style="text-decoration: none;">login</a></button> 
 
-                    <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
+                  <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
                 </form>
             </div>
         </div>
@@ -28,6 +27,8 @@
 </template>
 
 <script>
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
     export default {
       data() {
         return {
@@ -36,7 +37,19 @@
       },
 
       methods: {
-      }
+        register() {
+          const auth = getAuth();
+          createUserWithEmailAndPassword(auth, this.registerEmail, this.registerPassword)
+          .then((userCredential) => {
+            //signed in
+            alert('Successfully registered! Please Login.');
+            const user = userCredential.user;
+          })
+          .catch(error => {
+            alert(error.message);
+          });
+        },
+      },
 
     }
 

@@ -1,7 +1,6 @@
 <template>
     <body>
         <!-- Login Buttons n stuff -->
-        <!-- NOTES: will enable the form to send the data to something like google firebase-->
         <div class="login-page">
             <div class="form">
 
@@ -20,7 +19,7 @@
                   <button type="submit">login</button> 
                   <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
                 </form>
-                
+
             </div>
         </div>
     </body>

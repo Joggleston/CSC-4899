@@ -4,7 +4,8 @@
         <!-- NOTES: will enable the form to send the data to something like google firebase-->
         <div class="login-page">
             <div class="form">
-              <!-- subject to change -->
+
+              <!-- regiser form -->
                 <form class="register-form" v-if="!isLoginShown" @submit.prevent="register">
                   <input type="email" placeholder="Email address..." v-model="registerEmail"/>
                   <input type="password" placeholder="Password..." v-model="registerPassword"/>
@@ -12,22 +13,21 @@
                   <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
                 </form>
 
+                <!-- login form -->
                 <form class="login-form" v-if="isLoginShown" @submit.prevent="login">
                   <input type="email" placeholder="Email address..." v-model="loginEmail"/>
                   <input type="password" placeholder="Password..." v-model="loginPassword"/>
-
-                  <!-- Temp rededirects to dashboard -->
-                  <button type="submit"><a href="" style="text-decoration: none;">login</a></button> 
-
+                  <button type="submit">login</button> 
                   <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
                 </form>
+                
             </div>
         </div>
     </body>
 </template>
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
     export default {
       data() {
@@ -41,9 +41,24 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
           const auth = getAuth();
           createUserWithEmailAndPassword(auth, this.registerEmail, this.registerPassword)
           .then((userCredential) => {
-            //signed in
+            //registered acount
             alert('Successfully registered! Please Login.');
             const user = userCredential.user;
+          })
+          .catch(error => {
+            alert(error.message);
+          });
+        },
+
+        login() {
+          const auth = getAuth();
+          signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword)
+          .then((userCredential) => {
+            //signed in
+            alert('Successfully logged in!');
+            this.$router.push('/dashboard');
+            // const user = userCredential.user;
+            // console.log(user);
           })
           .catch(error => {
             alert(error.message);

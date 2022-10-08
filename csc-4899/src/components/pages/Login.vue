@@ -49,13 +49,14 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
           });
         },
 
+        // TODO: THIS IS UNDEFINED IN THE .THEN(), this becomes undefined in => functions
         login() {
           const auth = getAuth();
           signInWithEmailAndPassword(auth, this.loginEmail, this.loginPassword)
           .then((userCredential) => {
             //signed in
             alert('Successfully logged in!');
-            this.$router.push('/dashboard');
+            this.$router.push({ name: 'Dashboard' });
             // const user = userCredential.user;
             // console.log(user);
           })

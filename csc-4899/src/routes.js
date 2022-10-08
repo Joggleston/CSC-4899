@@ -16,24 +16,6 @@ import ShowPost from "./components/pages/ShowPost.vue"
 import ShowTopic from "./components/pages/ShowTopic.vue"
 import Dashboard from "./components/pages/dashboard.vue"
 
-// routes
-export const routes = [
-    { path: "/", name: "Home", component: Home}, 
-    { path: "/home", redirect: "/"}, 
-
-    { path: "/login", name: "Login", component: Login}, 
-    { path: "/logout", name: "Logout", component: Logout}, 
-
-    { path: "/create", name: "MakePost", component: MakePost}, 
-    { path: "/topics/:id", name: "PostTopics", component: PostTopics}, 
-    { path: "/u/id", name: "Profile", component: Profile}, 
-    { path: "/register", name: "Register", component: Register}, 
-    { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
-    { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
-
-    { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}}
-];
-
 // some methods n stuff
 const router = new VueRouter({
     mode: 'history',
@@ -55,3 +37,21 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+
+// routes
+export const routes = [
+    { path: "/", name: "Home", component: Home}, 
+    { path: "/home", redirect: "/"}, 
+
+    { path: "/login", name: "Login", component: Login}, 
+    { path: "/logout", name: "Logout", component: Logout}, 
+
+    { path: "/create", name: "MakePost", component: MakePost}, 
+    { path: "/topics/:id", name: "PostTopics", component: PostTopics}, 
+    { path: "/u/id", name: "Profile", component: Profile}, 
+    { path: "/register", name: "Register", component: Register}, 
+    { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
+    { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
+
+    { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}}
+];

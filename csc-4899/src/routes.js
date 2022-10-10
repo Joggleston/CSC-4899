@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { getAuth } from "firebase/auth";
+import { useRouter } from "vue-router";
 
 // page imports
 import Home from "./components/pages/Home.vue"
@@ -41,7 +42,7 @@ router.beforeEach((to, from, next) => {
         } else {
             alert('You must be logged in to see this page');
             next({
-                path: '/',
+                path: '/login',
             });
         }
     } else {

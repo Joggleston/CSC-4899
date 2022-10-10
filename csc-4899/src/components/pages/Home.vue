@@ -1,21 +1,22 @@
 <template>
-  
-  <nav>
-    <router-link to="/dashboard"> Dashboard </router-link>
-  </nav>
-
-  <Login/>
-  
+  <router-view />
 </template>
 
 <script>
 import Login from '@/components/pages/Login.vue'
+import Register from '@/components/pages/Register.vue'
 
 export default {
+  data() {
+    return {
+      isLoginShown: true
+    }
+  },
   name: 'Home',
-    components: {
-        Login
-    },
+  components: {
+  Login,
+  Register
+  },
 }
 </script>
 

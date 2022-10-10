@@ -1,28 +1,26 @@
 <template>
-    <body>
-        <!-- Login Buttons n stuff -->
-        <div class="login-page">
-            <div class="form">
-
-              <!-- regiser form -->
-                <form class="register-form" v-if="!isLoginShown" @submit.prevent="register">
-                  <input type="email" placeholder="Email address..." v-model="registerEmail"/>
-                  <input type="password" placeholder="Password..." v-model="registerPassword"/>
-                  <button type="submit">create</button>
-                  <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
-                </form>
-
-                <!-- login form -->
-                <form class="login-form" v-if="isLoginShown" @submit.prevent="login">
-                  <input type="email" placeholder="Email address..." v-model="loginEmail"/>
-                  <input type="password" placeholder="Password..." v-model="loginPassword"/>
-                  <button type="submit">login</button> 
-                  <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
-                </form>
-
-            </div>
-        </div>
-    </body>
+  <body>
+    <h1>Unknown Canvas Site</h1>
+    <!-- Login Buttons n stuff -->
+    <div class="login-page">
+      <div class="form">
+        <!-- regiser form -->
+        <form class="register-form" v-if="!isLoginShown" @submit.prevent="register">
+          <input type="email" placeholder="Email address..." v-model="registerEmail"/>
+          <input type="password" placeholder="Password..." v-model="registerPassword"/>
+          <button type="submit">create</button>
+          <p class="message">Already registered? <a href="#" @click="isLoginShown = !isLoginShown">Sign In</a></p>
+        </form>
+        <!-- login form -->
+        <form class="login-form" v-if="isLoginShown" @submit.prevent="login">
+          <input type="email" placeholder="Email address..." v-model="loginEmail"/>
+          <input type="password" placeholder="Password..." v-model="loginPassword"/>
+          <button type="submit">login</button> 
+          <p class="message">Not registered? <a href="#" @click="isLoginShown = !isLoginShown">Create an account</a></p>
+        </form>
+      </div>
+    </div>
+  </body>
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './components/pages/Home.vue'
+import router from "./routes"
 import { initializeApp } from "firebase/app"
 
 const firebaseConfig = {
@@ -15,5 +16,6 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-const app = createApp(App);
+const app = createApp(App)
+app.use(router)
 app.mount('#app')

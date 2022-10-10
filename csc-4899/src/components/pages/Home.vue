@@ -1,9 +1,11 @@
 <template>
-    <body>
-        <h1>Unknown Canvas Site</h1>
-        <Login/> <!-- login single page app -->
-    </body>
+  
+  <nav>
+    <router-link to="/dashboard"> Dashboard </router-link>
+  </nav>
 
+  <Login/>
+  
 </template>
 
 <script>

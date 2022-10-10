@@ -1,23 +1,42 @@
 <template>
+
+  <nav>
+    <p>WORK ON NAVBAR IT LOOKS UGLY!!!</p>
+    <router-link to="/"> Home </router-link>
+    <router-link to="/dashboard"> Dashboard </router-link>
+    <button @click="handleSignOut" v-if="isLoggedIn">Log Out</button>
+  </nav>
+
   <router-view />
+
 </template>
 
-<script>
-import Login from '@/components/pages/Login.vue'
-import Register from '@/components/pages/Register.vue'
+<script setup>
+  import { onMounted, ref } from "vue";
+  import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+  import { useRouter } from "vue-router";
 
-export default {
-  data() {
-    return {
-      isLoginShown: true
-    }
-  },
-  name: 'Home',
-  components: {
-  Login,
-  Register
-  },
-}
+  const router = useRouter();
+  const isLoggedIn = ref(false);
+
+  let auth;
+  onMounted(() => {
+    auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        isLoggedIn.value = true;
+      } else {
+        isLoggedIn.value = false;
+      }
+    });
+  });
+
+  const handleSignOut = () => {
+    signOut(auth).then(() => {
+      router.push("/login");
+    });
+  };
+
 </script>
 
 <style>

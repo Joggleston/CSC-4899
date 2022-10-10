@@ -5,7 +5,6 @@ import { useRouter } from "vue-router";
 // page imports
 import Home from "./components/pages/Home.vue"
 import Login from "./components/pages/Login.vue"
-import Logout from "./components/pages/Logout.vue"
 import MakePost from "./components/pages/MakePost.vue"
 import PostTopics from "./components/pages/PostTopics.vue"
 import Profile from "./components/pages/Profile.vue"
@@ -20,8 +19,7 @@ const router = createRouter({
         { path: "/", name: "Home", component: Home}, 
         { path: "/home", redirect: "/"}, 
 
-        { path: "/login", name: "Login", component: Login}, 
-        { path: "/logout", name: "Logout", component: Logout}, 
+        { path: "/login", name: "Login", component: Login},
 
         { path: "/create", name: "MakePost", component: MakePost}, 
         { path: "/topics/:id", name: "PostTopics", component: PostTopics}, 
@@ -36,14 +34,12 @@ const router = createRouter({
 
 // some methods n stuff
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.authRequired)) {
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (getAuth().currentUser) {
             next();
         } else {
             alert('You must be logged in to see this page');
-            next({
-                path: '/login',
-            });
+            next("/login");
         }
     } else {
         next();

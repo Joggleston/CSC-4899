@@ -4,6 +4,7 @@
     <p>WORK ON NAVBAR IT LOOKS UGLY!!!</p>
     <router-link to="/"> Home </router-link>
     <router-link to="/dashboard"> Dashboard </router-link>
+    <router-link to="/canvas"> Canvas </router-link>
     <button @click="handleSignOut" v-if="isLoggedIn">Log Out</button>
   </nav>
 

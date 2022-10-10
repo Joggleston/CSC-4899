@@ -11,12 +11,14 @@ import Register from "./components/pages/Register.vue"
 import ShowPost from "./components/pages/ShowPost.vue"
 import ShowTopic from "./components/pages/ShowTopic.vue"
 import Dashboard from "./components/pages/dashboard.vue"
+import Canvas from "./components/pages/Canvas.vue"
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", name: "Home", component: Home}, 
-        { path: "/home", redirect: "/"}, 
+        { path: "/home", name: "Home", component: Home}, 
+
+        { path: "/", redirect: "/login"}, //this should be the first page the user sees, default route view
 
         { path: "/login", name: "Login", component: Login},
 
@@ -27,7 +29,8 @@ const router = createRouter({
         { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
         { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
 
-        { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}}
+        { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}},
+        { path: "/canvas", name: "Canvas", component: Canvas},
     ]
 });
 

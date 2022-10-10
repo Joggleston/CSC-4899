@@ -7,7 +7,8 @@
         <input type="email" placeholder="Email address..." v-model="loginEmail"/>
         <input type="password" placeholder="Password..." v-model="loginPassword"/>
         <p v-if="errMsg">{{ errMsg }}</p>
-        <button type="submit">login</button> 
+        <button type="submit">Login</button> 
+        <button type="button" @click="signInWithGoogle">Sign In With Google</button>
         <p class="message">Not registered? <router-link to="/register">Create an Account</router-link></p>
       </form>
     </div>
@@ -16,7 +17,7 @@
 
 <script setup>
   import { ref } from "vue";
-  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
   import { useRouter } from "vue-router";
   const loginEmail = ref("");
   const loginPassword = ref("");
@@ -50,9 +51,17 @@
         }
       })
   };
-  const signInWithGoogle = () => { //will work on lata
-
-  }
+  const signInWithGoogle = () => { 
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(getAuth(), provider)
+            .then((result) => {
+                console.log(result.user);
+                router.push("/dashboard");
+            })
+            .catch((error) => {
+                //handle error
+            });
+    };
 
 </script>
 

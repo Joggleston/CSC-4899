@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { getAuth } from "firebase/auth";
-import { useRouter } from "vue-router";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // page imports
 import Home from "./components/pages/Home.vue"
@@ -33,9 +32,23 @@ const router = createRouter({
 });
 
 // some methods n stuff
-router.beforeEach((to, from, next) => {
+
+const getCurrentUser = () => { //grabs current user
+    return new Promise((resolve, reject) => {
+        const removeListener = onAuthStateChanged(
+            getAUth(),
+            (user) => {
+                removeListener();
+                resolve(user);
+            },
+            reject
+        );
+    });
+};
+
+router.beforeEach(async (to, from, next) => { //happens before each route change
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (getAuth().currentUser) {
+        if (await getCurrentUser() ) { //prevent us from getting kicked from page while logged in, on reload of course
             next();
         } else {
             alert('You must be logged in to see this page');

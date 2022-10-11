@@ -1,7 +1,6 @@
 <template>
 
   <nav>
-    <p>WORK ON NAVBAR IT LOOKS UGLY!!!</p>
     <router-link to="/"> Home </router-link>
     <router-link to="/dashboard"> Dashboard </router-link>
     <router-link to="/canvas"> Canvas </router-link>
@@ -54,5 +53,11 @@ h1 {
   text-align: center;
   padding-top: 4%;
   font-size: 50px;
+}
+nav {
+  text-align: center;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 50px;
 }
 </style>

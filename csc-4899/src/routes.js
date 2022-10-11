@@ -30,7 +30,7 @@ const router = createRouter({
         { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
 
         { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}},
-        { path: "/canvas", name: "Canvas", component: Canvas},
+        { path: "/canvas", name: "Canvas", component: Canvas, meta: { authRequired: true}},
     ]
 });
 
@@ -50,8 +50,8 @@ const getCurrentUser = () => { //grabs current user
 };
 
 router.beforeEach(async (to, from, next) => { //happens before each route change
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (await getCurrentUser() ) { //prevent us from getting kicked from page while logged in, on reload of course
+    if (to.matched.some((record) => record.meta.requiresAuth)) { //this is nev true
+        if (await getCurrentUser() ) { 
             next();
         } else {
             alert('You must be logged in to see this page');

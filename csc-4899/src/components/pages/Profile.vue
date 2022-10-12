@@ -1,7 +1,10 @@
 <template>
-    <div>
-
-    </div>
+    <body>
+        <h2>Profile</h2>
+        <div>
+            
+        </div>
+    </body>
 </template>
 
 <script>

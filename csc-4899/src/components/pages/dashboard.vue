@@ -1,13 +1,21 @@
 <template>
     <body>
-        <h2>Dashboard</h2>
-        <div class = "post">
-            <h2>John Doe</h2>
-            <!-- These will need to be implemented for the post functions. Serves more of 
-            an example of a post. -->
-            <!-- #the ./ tells the script that you're looking in the active directory -->
-            <img class = "postimg" src="./images/painting_scott_johnson.jpg" height="400" width="400" alt="Sample Image"/>
-            
+        <h2>Feed</h2>
+
+        <!-- These will need to be implemented for the post functions. Serves more of 
+        an example of a post. -->
+        <div class="row">
+
+            <div class = "post">
+                <router-link to="/profile"><h2>JohnDoe</h2></router-link>
+
+                <!-- #the ./ tells the script that you're looking in the active directory -->
+                <img class = "postimg" src="./images/painting_scott_johnson.jpg" height="400" width="400" alt="Sample Image"/>
+            </div>
+
+            <div class = "comments">
+            </div>
+
         </div>
     </body>
 </template>
@@ -23,22 +31,47 @@ h2 {
     color:#4CAF50;
     margin-top:0px
 }
+
+.row {
+    background-color:#5a5959;
+    width:200%;
+    border-style: solid;
+    border-width: 3px;
+    border-color:#4CAF50;
+}
+
+
 .post {
     background-color: #5a5959;
     display:grid;
+    column-count: 3;
 }
 .postimg {
     margin-left:20px;
+    margin-right:20px;
     margin-bottom:20px;
     border-width: 3px;
     border-color: #FFFFFF;
     border-style:solid;
+    float:left;
 }
 .post h2 {
     color:#FFFFFF;
     font-style: bolder;
     text-align:left;
+    
     margin-left:20px;
     margin-top:20px;
 }
+.post h2:hover {
+    color: #4CAF50;
+}
+
+.comments {
+    background-color:#262d26;
+    color:#FFFFFF;
+}
+
+
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <h1>Unknown Canvas Site</h1>
+    <h1>Canvost</h1>
     <!-- regiser form -->
     <div class="register-page">
         <div class="form">

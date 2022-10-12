@@ -1,5 +1,5 @@
 <template>
-  <h1>Unknown Canvas Site</h1>
+  <h1>Canvost</h1>
   <!-- Login Form -->
   <div class="login-page">
     <div class="form">
@@ -17,7 +17,7 @@
 
 <script setup>
   import { ref } from "vue";
-  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
   import { useRouter } from "vue-router";
   const loginEmail = ref("");
   const loginPassword = ref("");

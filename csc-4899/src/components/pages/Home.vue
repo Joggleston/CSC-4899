@@ -1,11 +1,11 @@
 <template>
-
-  <nav>
-    <router-link to="/"> Home </router-link>
+  <nav v-if = "isLoggedIn">
     <router-link to="/dashboard"> Dashboard </router-link>
     <router-link to="/canvas"> Canvas </router-link>
+    <router-link to="/profile"> Profile </router-link>
     <button @click="handleSignOut" v-if="isLoggedIn">Log Out</button>
   </nav>
+
 
   <router-view />
 
@@ -42,7 +42,7 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 body {
-  background: rgb(141,194,111);
+  background: #262d26;
   /*background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);*/
   font-family: "Roboto", sans-serif;     
 }
@@ -50,14 +50,32 @@ h1 {
   font-family: "Roboto", sans-serif;
   display:  block;
   margin: auto;
+  color: #43A047;
   text-align: center;
   padding-top: 4%;
   font-size: 50px;
 }
 nav {
-  text-align: center;
+  text-align:center;
 	display: grid;
+  font-weight: bold;
 	grid-template-columns: repeat(4, 1fr);
+  background-color: #5a5959;
 	grid-template-rows: 50px;
+  text-decoration:none;
 }
+
+nav a:visited, a {
+  font-size: 15pt;
+  padding-top:9pt;
+  text-align:center;
+  vertical-align: bottom;
+  text-decoration:none;
+  color:#FFFFFF;
+}
+nav a:hover {
+  background-color:#4CAF50;
+};
+
+
 </style>

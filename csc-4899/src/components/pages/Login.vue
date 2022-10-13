@@ -4,8 +4,8 @@
   <div class="login-page">
     <div class="form">
       <form class="login-form" @submit.prevent="login">
-        <input type="email" placeholder="Email address..." v-model="loginEmail"/>
-        <input type="password" placeholder="Password..." v-model="loginPassword"/>
+        <input type="email" placeholder="Email address..." v-model="loginEmail" required/>
+        <input type="password" placeholder="Password..." v-model="loginPassword" required/>
         <p v-if="errMsg">{{ errMsg }}</p>
         <button type="submit">Login</button> 
         <button type="button" @click="signInWithGoogle">Sign In With Google</button>

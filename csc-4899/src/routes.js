@@ -29,13 +29,12 @@ const router = createRouter({
         { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
         { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
 
-        { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { authRequired: true}},
-        { path: "/canvas", name: "Canvas", component: Canvas, meta: { authRequired: true}},
+        { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { requiresAuth: true }},
+        { path: "/canvas", name: "Canvas", component: Canvas, meta: { requiresAuth: true }},
     ]
 });
 
 // some methods n stuff
-
 const getCurrentUser = () => { //grabs current user
     return new Promise((resolve, reject) => {
         const removeListener = onAuthStateChanged(
@@ -51,11 +50,10 @@ const getCurrentUser = () => { //grabs current user
 
 router.beforeEach(async (to, from, next) => { //happens before each route change
     if (to.matched.some((record) => record.meta.requiresAuth)) { //this is neva true
-        console.log("this ran");
         if (await getCurrentUser() ) { 
             next();
         } else {
-            alert('You must be logged in to see this page');
+            // alert('You must be logged in to see this page');
             next("/login");
         }
     } else {

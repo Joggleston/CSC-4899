@@ -8,7 +8,7 @@
         <input type="password" placeholder="Password..." v-model="loginPassword" required/>
         <p v-if="errMsg">{{ errMsg }}</p>
         <button type="submit">Login</button> 
-        <button type="button" @click="signInWithGoogle">Sign In With Google</button>
+        <button type="button" @click="signInWithGoogle"><img src="./images/Google__G__Logo.svg"> Sign In With Google </button>
         <p class="message">Not registered? <router-link to="/register">Create an Account</router-link></p>
       </form>
     </div>

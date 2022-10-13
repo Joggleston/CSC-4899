@@ -8,7 +8,7 @@
             <input type="email" placeholder="Email address..." v-model="registerEmail"/>
             <input type="password" placeholder="Password..." v-model="registerPassword"/>
             <button type="submit">Create</button>
-            <!-- <button type="button" @click="signInWithGoogle">Sign In With Google</button> -->
+            <button type="button" @click="signInWithGoogle">Sign In With Google</button>
             <p class="message">Already registered? <router-link to="/login">Sign In</router-link></p>
             </form>
         </div>
@@ -38,17 +38,17 @@
                 alert(error.message);
             })
     };
-    // const signInWithGoogle = () => { 
-    //     const provider = new GoogleAuthProvider();
-    //     signInWithPopup(getAuth(), provider)
-    //         .then((result) => {
-    //             console.log(result.user);
-    //             router.push("/dashboard");
-    //         })
-    //         .catch((error) => {
-    //             //handle error
-    //         });
-    // };
+    const signInWithGoogle = () => { 
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(getAuth(), provider)
+            .then((result) => {
+                console.log(result.user);
+                router.push("/dashboard");
+            })
+            .catch((error) => {
+                //handle error
+            });
+    };
 
 </script>
 

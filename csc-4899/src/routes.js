@@ -39,7 +39,7 @@ const router = createRouter({
 const getCurrentUser = () => { //grabs current user
     return new Promise((resolve, reject) => {
         const removeListener = onAuthStateChanged(
-            getAUth(),
+            getAuth(),
             (user) => {
                 removeListener();
                 resolve(user);
@@ -50,7 +50,8 @@ const getCurrentUser = () => { //grabs current user
 };
 
 router.beforeEach(async (to, from, next) => { //happens before each route change
-    if (to.matched.some((record) => record.meta.requiresAuth)) { //this is nev true
+    if (to.matched.some((record) => record.meta.requiresAuth)) { //this is neva true
+        console.log("this ran");
         if (await getCurrentUser() ) { 
             next();
         } else {

@@ -1,5 +1,5 @@
 # CSC 4899 - Senior Project
-## [UNTITLED] - | BAILEY | GREEN | MARINO |
+## Canvost - | BAILEY | GREEN | MARINO |
 
 
 ## PROJECT DESCRIPTION
@@ -13,3 +13,9 @@
 ## FRAMEWORKS AND LIBRARIES USED:
     [1] Vue.js
     Link: https://www.vuejs.org
+    [2] Firebase
+    Link: https://firebase.google.com/
+    [3] Popper
+    Link: https://popper.js.org/
+    [4] Bootstrap
+    Link: https://getbootstrap.com/

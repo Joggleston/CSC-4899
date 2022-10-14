@@ -12,6 +12,7 @@ import ShowPost from "./components/pages/ShowPost.vue"
 import ShowTopic from "./components/pages/ShowTopic.vue"
 import Dashboard from "./components/pages/dashboard.vue"
 import Canvas from "./components/pages/Canvas.vue"
+import Bootstrap from "./components/pages/Bootstrap.vue"
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,6 +29,7 @@ const router = createRouter({
         { path: "/register", name: "Register", component: Register}, 
         { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
         { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
+        { path: "/bootstrap", name: "Bootstrap", component: Bootstrap},
 
         { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { requiresAuth: true }},
         { path: "/canvas", name: "Canvas", component: Canvas, meta: { requiresAuth: true }},

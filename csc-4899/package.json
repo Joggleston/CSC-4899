@@ -7,7 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@vue/cli": "^5.0.8",
+    "bootstrap": "^5.2.2",
     "core-js": "^3.6.5",
     "firebase": "^9.10.0",
     "firebaseui": "^6.0.1",

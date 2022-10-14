@@ -13,3 +13,8 @@
 ## FRAMEWORKS AND LIBRARIES USED:
     [1] Vue.js
     Link: https://www.vuejs.org
+    [2] Bootstrap
+    Link: https://getbootstrap.com/
+    [3] Firebase
+    Link: https://firebase.google.com/
+    

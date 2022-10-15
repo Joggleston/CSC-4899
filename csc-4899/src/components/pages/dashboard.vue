@@ -28,7 +28,7 @@ export default {
 <style>
 h2 {
     text-align:center;
-    color:#4CAF50;
+    color: #6667AB;
     margin-top:0px
 }
 
@@ -37,7 +37,7 @@ h2 {
     width:200%;
     border-style: solid;
     border-width: 3px;
-    border-color:#4CAF50;
+    border-color:#6667AB;
 }
 
 
@@ -64,7 +64,7 @@ h2 {
     margin-top:20px;
 }
 .post h2:hover {
-    color: #4CAF50;
+    color: #6667AB;
 }
 
 .comments {

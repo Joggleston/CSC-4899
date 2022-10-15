@@ -1,14 +1,42 @@
 <template>
-  <nav v-if = "isLoggedIn">
+  <body>
+
+  <!-- <nav v-if = "isLoggedIn">
     <router-link to="/dashboard"> Dashboard </router-link>
     <router-link to="/canvas"> Canvas </router-link>
     <router-link to="/profile"> Profile </router-link>
     <button @click="handleSignOut" v-if="isLoggedIn">Log Out</button>
-  </nav>
+  </nav> -->
 
+  <nav class="navbar navbar-expand-lg" v-if="isLoggedIn">
+  <div class="container-fluid">
+    <a class="navbar-brand">Canvost</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/canvas">Canvas</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/profile">Profile</router-link>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link" @click="handleSignOut">Log Out</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <router-view />
+<!-- This is the main site vue file thing, dont touch -->
+<router-view />
 
+</body>
 </template>
 
 <script setup>
@@ -41,10 +69,9 @@
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body {
-  background: #262d26;
-  /*background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);*/
-  font-family: "Roboto", sans-serif;     
+body { 
+  background: #262d26 !important; 
+  font-family: "Roboto", sans-serif !important;  
 }
 h1 {
   font-family: "Roboto", sans-serif;
@@ -64,17 +91,16 @@ nav {
 	grid-template-rows: 50px;
   text-decoration:none;
 }
-
-nav a:visited, a {
+/* nav a:visited, a {
   font-size: 15pt;
   padding-top:9pt;
   text-align:center;
   vertical-align: bottom;
   text-decoration:none;
   color:#FFFFFF;
-}
-nav a:hover {
-  background-color:#4CAF50;
+} */
+nav li:hover {
+  background-color:#6667AB;
 };
 
 

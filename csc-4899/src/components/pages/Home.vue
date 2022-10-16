@@ -68,7 +68,7 @@
 </script>
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import '../css/main.css';
 body { 
   background: #262d26 !important; 
   font-family: "Roboto", sans-serif !important;  
@@ -77,7 +77,6 @@ h1 {
   font-family: "Roboto", sans-serif;
   display:  block;
   margin: auto;
-  color: #43A047;
   text-align: center;
   padding-top: 4%;
   font-size: 50px;
@@ -101,7 +100,5 @@ nav {
 } */
 nav li:hover {
   background-color:#6667AB;
-};
-
-
+}
 </style>

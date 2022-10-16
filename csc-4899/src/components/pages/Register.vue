@@ -53,5 +53,6 @@
 </script>
 
 <style>
+    @import '../css/main.css';
     @import '../css/loginAndRegister.css';
 </style>

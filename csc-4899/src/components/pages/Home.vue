@@ -26,6 +26,9 @@
           <router-link class="nav-link" to="/profile">Profile</router-link>
         </li>
         <li class="nav-item">
+          <router-link class="nav-link" to="/create">Publish</router-link>
+        </li>
+        <li class="nav-item">
           <p class="nav-link" @click="handleSignOut">Log Out</p>
         </li>
       </ul>

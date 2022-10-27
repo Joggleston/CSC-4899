@@ -23,7 +23,7 @@ const router = createRouter({
 
         { path: "/login", name: "Login", component: Login},
 
-        { path: "/create", name: "MakePost", component: MakePost}, 
+        { path: "/create", name: "MakePost", component: MakePost, meta: { requiresAuth: true }}, 
         { path: "/topics/:id", name: "PostTopics", component: PostTopics}, 
         { path: "/u/id", name: "Profile", component: Profile}, 
         { path: "/register", name: "Register", component: Register}, 

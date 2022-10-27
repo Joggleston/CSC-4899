@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './components/pages/Home.vue'
 import router from "./routes"
 import { initializeApp } from "firebase/app"
+import "./components/css/main.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 

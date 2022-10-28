@@ -10,27 +10,28 @@
 </template>
 
 <script>
-import { doc, setDoc, Timestamp} from "firebase/firestore"; 
-
+// import { doc, addDoc, serverTimestamp } from "firebase/firestore"; 
+import { doc, addDoc, serverTimestamp } from 'firebase/compat/firestore'; 
 const postText = ref("");
 const postImageUrl = ref("");
 
 const register = () => {
-
-    var documentName = "something";
-
+    //https://firebase.google.com/docs/firestore/manage-data/add-data
     const docData = {
         UUID: "UUID String here",
         Text: postText,
         Image: postImageUrl,
-        PostID: "add 1 to last post id",
         Dislikes: 0,
         Likes: 0,
         Reposts: 0,
-        Timestamp: Timestamp.now()
+        Timestamp: serverTimestamp()
     }
-    // Add a new document in collection "Posts"
-    setDoc(doc(db, "Posts", documentName), docData);
+
+    // Add a new document in collection "Posts" with auto gen id
+    addDoc(doc(db, "Posts"), docData);
+
+    console.log("");
+    // router.push("/dashboard");
 }
 
 </script>

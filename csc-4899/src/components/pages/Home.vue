@@ -109,8 +109,7 @@ nav li:hover {
 }
 
  div .search {
-  margin-right:10px;
-  background-color: #262d26;
+  margin-right:20px;
   float:right;
 }
 

@@ -34,6 +34,9 @@
       </ul>
     </div>
   </div>
+  <div class ="search">
+    <input type="search" placeholder="Search">
+  </div>
 </nav>
 
 <!-- This is the main site vue file thing, dont touch -->
@@ -103,5 +106,17 @@ nav {
 } */
 nav li:hover {
   background-color:#6667AB;
+}
+
+ div .search {
+  margin-right:10px;
+  background-color: #262d26;
+  float:right;
+}
+
+input {
+  color: white;
+  background-color: #262d26;
+  border:2px, solid, #6667AB;
 }
 </style>

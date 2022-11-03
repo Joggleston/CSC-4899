@@ -13,7 +13,7 @@
 import { ref } from "vue";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { db } from 'C:/Users/peter/OneDrive/Documents/GitHub/CSC-4899/csc-4899/src/main.js'; //CHANGE THIS SHIT
+import { db } from '/src/main.js'; //CHANGE THIS SHIT
 import { useRouter } from "vue-router";
 
 const postText = ref("");

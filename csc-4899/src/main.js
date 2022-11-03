@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app"
 import "./components/css/main.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB3Ak6z97pHKC48i6ovMhVutHXoRU6dM3c",
@@ -17,8 +18,11 @@ const firebaseConfig = {
   };
   
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+const mainApp = createApp(App)
+const db = getFirestore(app);
+mainApp.use(router)
+mainApp.mount('#app')
+
+export { db };

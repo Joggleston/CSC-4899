@@ -9,9 +9,10 @@
     </div>
 </template>
 
-<script>
-// import { doc, addDoc, serverTimestamp } from "firebase/firestore"; 
-import { doc, addDoc, serverTimestamp } from 'firebase/compat/firestore'; 
+<script setup>
+import { ref } from "vue";
+import { doc, addDoc, Timestamp } from "firebase/firestore";
+
 const postText = ref("");
 const postImageUrl = ref("");
 
@@ -19,18 +20,18 @@ const register = () => {
     //https://firebase.google.com/docs/firestore/manage-data/add-data
     const docData = {
         UUID: "UUID String here",
-        Text: postText,
-        Image: postImageUrl,
+        Text: postText.value,
+        Image: postImageUrl.value,
         Dislikes: 0,
         Likes: 0,
         Reposts: 0,
-        Timestamp: serverTimestamp()
+        Timestamp: Timestamp.now(),
     }
 
     // Add a new document in collection "Posts" with auto gen id
     addDoc(doc(db, "Posts"), docData);
 
-    console.log("");
+    // console.log("");
     // router.push("/dashboard");
 }
 

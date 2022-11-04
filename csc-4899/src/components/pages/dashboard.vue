@@ -1,5 +1,6 @@
 <template>
     <body>
+        
         <h2>Feed</h2>
 
         <!-- These will need to be implemented for the post functions. Serves more of 
@@ -7,7 +8,6 @@
         <div class="row">
 
             <div class = "post">
-                <router-link to="/profile"><h2>JohnDoe</h2></router-link>
 
                 <!-- #the ./ tells the script that you're looking in the active directory -->
                 <img class = "postimg" src="./images/painting_scott_johnson.jpg" height="400" width="400" alt="Sample Image"/>
@@ -24,6 +24,9 @@
 export default {
     
 }
+
+
+
 </script>
 
 <style>

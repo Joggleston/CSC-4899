@@ -34,8 +34,8 @@
       </ul>
     </div>
   </div>
-  <div class ="search">
-    <input type="search" placeholder="Search">
+  <div id ="search">
+    <input type="search" placeholder="User Search">
   </div>
 </nav>
 
@@ -70,6 +70,10 @@
       router.push("/login");
     });
   };
+
+  var input = document.getElementById("search")
+  const reference = collection(db, "Users")
+  const q = query(reference, where("Username", "==", input))
 
 </script>
 
@@ -116,6 +120,6 @@ nav li:hover {
 input {
   color: white;
   background-color: #262d26;
-  border:2px, solid, #6667AB;
+  border:10px, solid, #6667AB;
 }
 </style>

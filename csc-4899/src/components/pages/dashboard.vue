@@ -30,8 +30,8 @@
                 <div class="card">
                     <img class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">UUID: {{ post.UUID }}</h5>
-                        <p class="card-text">{{ post.Text }}</p>
+                        <h5 class="card-title">Poster Unique ID: {{ post.UUID }}</h5>
+                        <p class="card-text">Post Text: {{ post.Text }}</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Posted on {{post.Timestamp}}</small>

@@ -13,7 +13,7 @@
 import { ref } from "vue";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { db } from '/src/main.js'; //CHANGE THIS SHIT
+import { db } from '/src/main.js';
 import { useRouter } from "vue-router";
 
 const postText = ref("");
@@ -34,7 +34,7 @@ const register = () => {
         Dislikes: 0,
         Likes: 0,
         Reposts: 0,
-        Timestamp: Timestamp.now()
+        Timestamp: Timestamp.now(),
     });
 
     // console.log("");

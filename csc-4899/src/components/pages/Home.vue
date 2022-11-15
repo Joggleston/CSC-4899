@@ -40,7 +40,14 @@
 </nav>
 
 <!-- This is the main site vue file thing, dont touch -->
-<router-view />
+<Suspense>
+   <template #default>
+    <router-view />
+   </template>
+   <template #fallback>
+     <span>Loading...</span>
+   </template>
+ </Suspense>
 
 </body>
 </template>
@@ -70,10 +77,6 @@
       router.push("/login");
     });
   };
-
-  var input = document.getElementById("search")
-  const reference = collection(db, "Users")
-  const q = query(reference, where("Username", "==", input))
 
 </script>
 

@@ -1,33 +1,46 @@
+<script setup>
+    import { collection, query, getDocs } from "firebase/firestore";
+    import { db } from "/src/main.js";
+
+    const q = query(collection(db, "Posts"));
+
+    const Docs = await getDocs(q); 
+    const postArray = [];
+
+    Docs.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        postArray.push(doc.data());
+    });
+
+    // post.Image.replace(/\\/g,'\\\\')
+    console.log(postArray[0].Image);
+
+
+</script>
+
 <template>
     <body>
         
         <h2>Feed</h2>
 
-        <!-- These will need to be implemented for the post functions. Serves more of 
-        an example of a post. -->
-        <div class="row">
+        <!-- Post Card Here -->
 
-            <div class = "post">
-
-                <!-- #the ./ tells the script that you're looking in the active directory -->
-                <img class = "postimg" src="./images/painting_scott_johnson.jpg" height="400" width="400" alt="Sample Image"/>
+        <div class="card-deck">
+            <div v-for="post in postArray">
+                <div class="card">
+                    <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">UUID: {{ post.UUID }}</h5>
+                        <p class="card-text">{{ post.Text }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Posted on {{post.Timestamp}}</small>
+                    </div>
+                </div>
             </div>
-
-            <div class = "comments">
-            </div>
-
         </div>
     </body>
 </template>
-
-<script>
-export default {
-    
-}
-
-
-
-</script>
 
 <style>
 @import '../css/main.css';

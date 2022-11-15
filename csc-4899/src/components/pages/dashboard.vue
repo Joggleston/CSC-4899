@@ -23,27 +23,40 @@
         
         <h2>Feed</h2>
 
-        <!-- Post Card Here -->
+        <!-- this and its css are causing the cards to be cut off -->
+        <div class="card-columns"> 
+            <!-- Post Card Here -->
+                <div v-for="post in postArray">
 
-        <div class="card-deck">
-            <div v-for="post in postArray">
-                <div class="card">
-                    <img class="card-img-top" :src="post.Image" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Poster Unique ID: {{ post.UUID }}</h5>
-                        <p class="card-text">Post Text: {{ post.Text }}</p>
+                    <div class="card">
+                        <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Poster Unique ID: {{ post.UUID }}</h5>
+                            <p class="card-text">Post Text: {{ post.Text }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Posted on {{post.Timestamp}}</small>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Posted on {{post.Timestamp}}</small>
-                    </div>
+
                 </div>
-            </div>
         </div>
+
     </body>
 </template>
 
 <style>
 @import '../css/main.css';
+.card {
+    display: inline-block !important;
+    margin-bottom: 6%;
+}
+.card-columns {
+    column-count: 3;
+}
+.card {
+    max-width: 300px;
+}
 h2 {
     text-align:center;
     color: #6667AB;

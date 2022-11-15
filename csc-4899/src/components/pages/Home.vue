@@ -1,7 +1,7 @@
 <template>
   <body>
-
-  <!-- <nav v-if = "isLoggedIn">
+<!-- 
+  <nav v-if = "isLoggedIn">
     <router-link to="/dashboard"> Dashboard </router-link>
     <router-link to="/canvas"> Canvas </router-link>
     <router-link to="/profile"> Profile </router-link>
@@ -72,8 +72,6 @@
   };
 
   var input = document.getElementById("search")
-  const reference = collection(db, "Users")
-  const q = query(reference, where("Username", "==", input))
 
 </script>
 

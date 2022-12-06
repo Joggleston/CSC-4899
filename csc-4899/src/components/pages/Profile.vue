@@ -1,4 +1,11 @@
+<script setup>
+        import { collection, query, getDocs } from "firebase/firestore";
+        import { db } from "/src/main.js";
+</script>
+
+
 <template>
+    
     <body>
         <h2>Profile</h2>
         <div>
@@ -8,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
     
 }

@@ -1,6 +1,7 @@
 <script setup>
     import { collection, query, getDocs } from "firebase/firestore";
     import { db } from "/src/main.js";
+    
 
     const q = query(collection(db, "Posts"));
 
@@ -51,11 +52,21 @@
     display: inline-block !important;
     margin-bottom: 6%;
 }
+.card-body {
+    background-color:#5a5959;
+}
+.card-title {
+    color:#FFFFFF;
+}
+.card-text {
+    color:#FFFFFF;
+}
 .card-columns {
-    column-count: 3;
+    column-count: 4;
 }
 .card {
     max-width: 300px;
+    
 }
 h2 {
     text-align:center;

@@ -33,7 +33,7 @@
             .then((data) => {
                 console.log("Successfully Registration!");
                 console.log(auth.currentUser)
-                router.push('/dashboard');
+                createUser();
             })
             .catch((error) => {
                 console.log(error.code);
@@ -50,7 +50,7 @@
         signInWithPopup(getAuth(), provider)
             .then((result) => {
                 console.log(result.user);
-                router.push("/dashboard");
+                createUser();
             })
             .catch((error) => {
                 //handle error
@@ -60,15 +60,18 @@
     const createUser = () => {
 
         const auth = getAuth()
+
         var user = auth.currentUser;
-            addDoc(collection(db,"Users"),{
-                UUID: user.uid,
-                Username:registerUsername.value,
-                Email:registerEmail.value,
-                Profile: "",
-                RegisterDate: Timestamp.now
+
+        addDoc(collection(db,"Users"),{
+            UUID: user.uid,
+            Username:registerUsername.value,
+            Email:registerEmail.value,
+            Profile: "",
+            DateRegistered: Timestamp.now(),
                 
-            });
+        });
+        router.push('/dashboard');
 
     };
 

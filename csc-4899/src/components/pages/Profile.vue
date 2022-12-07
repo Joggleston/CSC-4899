@@ -34,26 +34,26 @@
         </div>
         
         
-        <div class="card-columns"> 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+
             <!-- Post Card Here -->
-                <div v-for="post in postArray">
-
-        <div v-for="post in postArray">
-
-            <div class="card">
-                <img class="card-img-top" :src="post.Image" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">{{ post.Text }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{ post.UUID }}</small>
-                    <br>
-                    <small class="text-muted">{{post.Timestamp.toDate()}}</small>
+            <div v-for="post in postArray" class="card-div">
+                <div class="card">
+                    <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <small class="card-text">{{ post.Text }}</small>
+                        <br><br>
+                        <small class="card-text">-{{ post.Username }}</small>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{
+                            post.Timestamp.toDate().toLocaleString()
+                            }}</small>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
-    </div>
 
     </body>
 </template>

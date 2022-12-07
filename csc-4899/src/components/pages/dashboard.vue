@@ -38,9 +38,11 @@
                         <small class="card-text">-{{ post.Username }}</small>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">{{
-                            post.Timestamp.toDate().toLocaleString()
-                            }}</small>
+                        <small class="card-muted">Likes: {{ post.Likes }}</small>
+                        <br>
+                        <small class="card-muted">  Dislikes: {{ post.Dislikes }}</small>
+                        <br>
+                        <small class="text-muted">{{post.Timestamp.toDate().toLocaleString()}}</small>
                     </div>
                 </div>
             </div>

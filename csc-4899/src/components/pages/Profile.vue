@@ -40,6 +40,7 @@
 
 <script>
     export default{
+        props: ['myprop'],
         methods: {
             imageClicked(img) {
                 var modal = document.getElementById("myModal");

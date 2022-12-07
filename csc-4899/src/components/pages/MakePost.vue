@@ -2,7 +2,8 @@
     <!-- Create Post -->
     <div class="form">
         <form class="create-form" @submit.prevent="register">
-            <input type="text" placeholder="Text Here..." v-model="postText" required/>
+            <!-- <input type="text" placeholder="Text Here..." v-model="postText" required/> -->
+            <textarea cols="30" rows="10" placeholder="Text Here..." v-model="postText" required></textarea>
             <input type="text" placeholder="Image URL..." v-model="postImageUrl" required/>
             <button type="submit">Publish</button>
         </form>
@@ -42,3 +43,20 @@ const register = () => {
 }
 
 </script>
+
+<style>
+textarea{
+font-family: "Roboto", sans-serif;
+outline: 0;
+background: #afaeae;
+width: 100%;
+border: 0;
+margin: 0 0 15px;
+padding: 15px;
+box-sizing: border-box;
+font-size: 14px;
+}
+.form {
+margin-top: 25px;
+}
+</style>

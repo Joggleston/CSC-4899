@@ -41,9 +41,6 @@
             })
 
 
-
-
-
     };
     const signInWithGoogle = () => { 
         const provider = new GoogleAuthProvider();

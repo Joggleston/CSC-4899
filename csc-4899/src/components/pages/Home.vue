@@ -1,12 +1,5 @@
 <template>
   <body>
-<!-- 
-  <nav v-if = "isLoggedIn">
-    <router-link to="/dashboard"> Dashboard </router-link>
-    <router-link to="/canvas"> Canvas </router-link>
-    <router-link to="/profile"> Profile </router-link>
-    <button @click="handleSignOut" v-if="isLoggedIn">Log Out</button>
-  </nav> -->
 
   <nav class="navbar navbar-expand-lg" v-if="isLoggedIn">
   <div class="container-fluid">
@@ -34,7 +27,7 @@
       </ul>
     </div>
   </div>
-  <div id ="search">
+  <div class="search">
     <input type="search" placeholder="User Search">
   </div>
 </nav>
@@ -56,8 +49,6 @@
   import { onMounted, ref } from "vue";
   import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
   import { useRouter } from "vue-router";
-
-
 
   const router = useRouter();
   const isLoggedIn = ref(false);
@@ -116,12 +107,10 @@ nav {
 nav li:hover {
   background-color:#6667AB;
 }
-
- div .search {
+div .search {
   margin-right:20px;
   float:right;
 }
-
 input {
   color: white;
   background-color: #262d26;

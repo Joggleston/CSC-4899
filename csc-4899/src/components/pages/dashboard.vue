@@ -32,11 +32,12 @@
                     <div class="card">
                         <img class="card-img-top" :src="post.Image" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Poster Unique ID: {{ post.UUID }}</h5>
-                            <p class="card-text">Post Text: {{ post.Text }}</p>
+                            <p class="card-text">{{ post.Text }}</p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Posted on {{post.Timestamp}}</small>
+                            <small class="text-muted">{{ post.UUID }}</small>
+                            <br>
+                            <small class="text-muted">{{post.Timestamp.toDate()}}</small>
                         </div>
                     </div>
 
@@ -50,7 +51,7 @@
 @import '../css/main.css';
 .card {
     display: inline-block !important;
-    margin-bottom: 6%;
+    margin: 10px;
 }
 .card-body {
     background-color:#5a5959;

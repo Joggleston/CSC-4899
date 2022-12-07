@@ -7,21 +7,21 @@
         const auth = getAuth();
         var user = auth.currentUser;
 
-        //error cause we try testing for uid before page finished loading
-        //sort database based on user id posts
-        // const q = query(collection(db, "Posts"), where("UUID", "==", user.uid));
-        // const Docs = await getDocs(q); 
-
-        // const postArray = [];
-        // Docs.forEach((doc) => {
-        //     postArray.push(doc.data());
-        // });
-        // console.log(Docs)
         const username = [];
         const usernameQ = await getDocs(query(collection(db,"Users"), where("UUID","==",user.uid)));
         usernameQ.forEach((doc) => {
+
+            username.push(doc.data());
+        });
+
+        const postArray = [];
+        const postQ = await getDocs(query(collection(db,"Posts"), where("UUID","==",user.uid)));
+        console.log(postQ);
+        postQ.forEach((doc) => {
+            
+            postArray.push(doc.data());
             console.log(doc.id, " => ", doc.data());
-            username.push(doc.data())
+            
         });
 
 
@@ -35,18 +35,7 @@
         
 
         <div v-for="post in postArray">
-
-            <div class="card">
-                <img class="card-img-top" :src="post.Image" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">{{ post.Text }}</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">{{ post.UUID }}</small>
-                    <br>
-                    <small class="text-muted">{{post.Timestamp.toDate()}}</small>
-                </div>
-            </div>
+            <img class="card-img-top" :src="post.Image" alt="Card image cap">
         </div>
 
     </body>
@@ -61,6 +50,9 @@
     background-color: #6667AB;
     font-size:200%;
     float:center;
+}
+p {
+    color:white;
 }
 
 </style>

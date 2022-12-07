@@ -16,7 +16,7 @@
 
         const postArray = [];
         const postQ = await getDocs(query(collection(db,"Posts"), where("UUID","==",user.uid)));
-        console.log(postQ);
+
         postQ.forEach((doc) => {
             
             postArray.push(doc.data());
@@ -33,9 +33,18 @@
             <p class ="name">{{ name.Username }}</p>
         </div>
         
+        
+        <div class="card-columns"> 
+            <!-- Post Card Here -->
+                <div v-for="post in postArray">
 
-        <div v-for="post in postArray">
-            <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <div class="card">
+                        <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.Text }}</p>
+                        </div>
+                    </div>
+            </div>
         </div>
 
     </body>
@@ -54,6 +63,13 @@
 p {
     color:white;
 }
+.card {
+    max-width:200px;
+}
+.card-body {
+    background-color:#262d26;
+}
+
 
 </style>
 

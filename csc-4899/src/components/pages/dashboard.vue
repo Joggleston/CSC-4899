@@ -7,11 +7,18 @@
 
     const Docs = await getDocs(q); 
     const postArray = [];
-
+    const userArray = [];
+    
     Docs.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
         postArray.push(doc.data());
     });
+
+    
+
+    
+    console.log(userArray)
+
 
     // post.Image.replace(/\\/g,'\\\\')
     console.log(postArray[0].Image);
@@ -34,11 +41,7 @@
                         <div class="card-body">
                             <p class="card-text">{{ post.Text }}</p>
                         </div>
-                        <div class="card-footer">
-                            <small class="text-muted">{{ post.UUID }}</small>
-                            <br>
-                            <small class="text-muted">{{post.Timestamp.toDate()}}</small>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -61,12 +64,14 @@
 }
 .card-text {
     color:#FFFFFF;
+    height:100px;
 }
 .card-columns {
-    column-count: 4;
+    column-count: 5;
 }
 .card {
-    max-width: 300px;
+    width:200px;
+    height:400px;
     
 }
 h2 {
@@ -80,6 +85,7 @@ h2 {
     border-style: solid;
     border-width: 3px;
     border-color:#6667AB;
+    align-items:center;
 }
 .post {
     background-color: #5a5959;
@@ -87,10 +93,10 @@ h2 {
     column-count: 3;
 }
 .postimg {
-    margin-left:20px;
-    margin-right:20px;
-    margin-bottom:20px;
-    border-width: 3px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom:10px;
+    border-width: 5px;
     border-color: #FFFFFF;
     border-style:solid;
     float:left;

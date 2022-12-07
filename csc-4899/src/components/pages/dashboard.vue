@@ -2,7 +2,6 @@
     import { collection, query, getDocs } from "firebase/firestore";
     import { db } from "/src/main.js";
     
-
     const q = query(collection(db, "Posts"));
 
     const Docs = await getDocs(q); 
@@ -14,11 +13,7 @@
         postArray.push(doc.data());
     });
 
-    
-
-    
     console.log(userArray)
-
 
     // post.Image.replace(/\\/g,'\\\\')
     console.log(postArray[0].Image);
@@ -31,20 +26,23 @@
         
         <p class = "header">Feed</p>
 
-        <!-- this and its css are causing the cards to be cut off -->
-        <div class="card-columns"> 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+
             <!-- Post Card Here -->
-                <div v-for="post in postArray">
-
-                    <div class="card">
-                        <img class="card-img-top" :src="post.Image" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">{{ post.Text }}</p>
-                        </div>
-                        
+            <div v-for="post in postArray">
+                <div class="card">
+                    <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">{{ post.Text }}</p>
                     </div>
-
+                    <div class="card-footer">
+                        <small class="text-muted">{{ post.UUID }}</small>
+                        <br>
+                        <small class="text-muted">{{post.Timestamp.toDate()}}</small>
+                    </div>
                 </div>
+            </div>
+
         </div>
 
     </body>
@@ -53,7 +51,7 @@
 <style>
 @import '../css/main.css';
 .card {
-    display: inline-block !important;
+    /* display: inline-block !important; */
     margin: 10px;
 }
 .card-body {
@@ -66,11 +64,8 @@
     color:#FFFFFF;
     height:100px;
 }
-.card-columns {
-    column-count: 5;
-}
 .card {
-    width:200px;
+    /* width:200px; */
     height:400px;
     
 }
@@ -78,14 +73,6 @@ h2 {
     text-align:center;
     color: #6667AB;
     margin-top:0px
-}
-.row {
-    background-color:#5a5959;
-    width:200%;
-    border-style: solid;
-    border-width: 3px;
-    border-color:#6667AB;
-    align-items:center;
 }
 .post {
     background-color: #5a5959;

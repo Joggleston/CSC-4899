@@ -27,8 +27,13 @@
       </ul>
     </div>
   </div>
-  <div class="search">
-    <input type="search" placeholder="User Search">
+  <div class="searchwrapper">
+    <input type="search" placeholder="Search Users" id = "search">
+  </div>
+  <div class="users">
+    <div class="card">
+      <div class="header">Name</div>
+    </div>
   </div>
 </nav>
 
@@ -107,13 +112,20 @@ nav {
 nav li:hover {
   background-color:#6667AB;
 }
-div .search {
+div .searchwrapper {
+  display: flex;
+  flex-direction:column;
   margin-right:20px;
   float:right;
+  gap:.25rem;
 }
 input {
   color: white;
   background-color: #262d26;
   border:10px, solid, #6667AB;
+}
+.users {
+  display:grid;
+  grid-template-columns: repeat(auto-fill);
 }
 </style>

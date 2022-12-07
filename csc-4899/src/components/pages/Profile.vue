@@ -36,7 +36,8 @@
         
         <div class="card-columns"> 
             <!-- Post Card Here -->
-                
+                <div v-for="post in postArray">
+
         <div v-for="post in postArray">
 
             <div class="card">
@@ -51,6 +52,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     </body>

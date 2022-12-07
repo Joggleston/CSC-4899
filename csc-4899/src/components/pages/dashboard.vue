@@ -33,12 +33,14 @@
                 <div class="card">
                     <img class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text">{{ post.Text }}</p>
+                        <small class="card-text">{{ post.Text }}</small>
+                        <br><br>
+                        <small class="card-text">-{{ post.Username }}</small>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">{{ post.UUID }}</small>
-                        <br>
-                        <small class="text-muted">{{post.Timestamp.toDate()}}</small>
+                        <small class="text-muted">{{
+                            post.Timestamp.toDate().toLocaleString()
+                            }}</small>
                     </div>
                 </div>
             </div>
@@ -50,6 +52,9 @@
 
 <style>
 @import '../css/main.css';
+.username{
+    color: ;
+}
 .card-div{
     display: flex;
     justify-content: center;

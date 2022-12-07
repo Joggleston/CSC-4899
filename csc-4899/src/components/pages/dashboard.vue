@@ -29,7 +29,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
             <!-- Post Card Here -->
-            <div v-for="post in postArray">
+            <div v-for="post in postArray" class="card-div">
                 <div class="card">
                     <img class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
@@ -50,6 +50,10 @@
 
 <style>
 @import '../css/main.css';
+.card-div{
+    display: flex;
+    justify-content: center;
+}
 .card {
     /* display: inline-block !important; */
     margin: 10px;

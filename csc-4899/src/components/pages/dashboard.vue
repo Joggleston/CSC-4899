@@ -64,11 +64,10 @@
     color:#FFFFFF;
     height:100px;
 }
-.card {
-    /* width:200px; */
+/* .card {
+    width:200px;
     height:400px;
-    
-}
+} */
 h2 {
     text-align:center;
     color: #6667AB;
@@ -110,5 +109,28 @@ h2 {
     background-color: #6667AB;
     font-size:200%;
     float:center;
+}
+@media (max-width: 576px) {  
+  .xs {color:red;font-weight:bold;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width:768px) {  
+  .sm {color:red;font-weight:bold;}
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) and (max-width:992px) {  
+ .md {color:red;font-weight:bold;}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width:1200px) { 
+ .lg {color:red;font-weight:bold;}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .xl {color:red;font-weight:bold;}
 }
 </style>

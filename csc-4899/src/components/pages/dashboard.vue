@@ -29,7 +29,7 @@
 <template>
     <body>
         
-        <h2>Feed</h2>
+        <p class = "header">Feed</p>
 
         <!-- this and its css are causing the cards to be cut off -->
         <div class="card-columns"> 
@@ -114,5 +114,14 @@ h2 {
 .comments {
     background-color:#262d26;
     color:#FFFFFF;
+}
+.header {
+    color:white;
+    font-weight:200;
+    text-align: center;
+    padding: 0px;
+    background-color: #6667AB;
+    font-size:200%;
+    float:center;
 }
 </style>

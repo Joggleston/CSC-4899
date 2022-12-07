@@ -19,7 +19,7 @@ const router = createRouter({
     routes: [
         { path: "/home", name: "Home", component: Home}, 
 
-        { path: "/", redirect: "/login"}, //this should be the first page the user sees, default route view
+        { path: "/", redirect: "/dashboard", meta:{requiresAuth: true }}, //this should be the first page the user sees, default route view
 
         { path: "/login", name: "Login", component: Login},
 

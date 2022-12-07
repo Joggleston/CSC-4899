@@ -39,6 +39,7 @@
         const postArray = [];
         Docs.forEach((doc) => {
             postArray.push(doc.data());
+            console.log(postArray)
         });
 
 

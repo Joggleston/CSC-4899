@@ -17,7 +17,7 @@
             <!-- Post Card Here -->
             <div v-for="post in postArray" class="card-div">
                 <div class="card">
-                    <img @click="imageClicked(post.Image);" class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <img @click="imageClicked(post.Image);" id="myImg" class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
                         <small class="card-text">{{ post.Text }}</small>
                         <br><br>

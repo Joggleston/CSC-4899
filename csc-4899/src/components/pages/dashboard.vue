@@ -20,9 +20,32 @@
 
 
 </script>
+<script>
+    export default{
+        methods: {
+            imageClicked(img) {
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("img01");
+
+                modal.style.display = "block";
+                modalImg.src = img;
+            },
+
+            closeImage() { 
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            },
+        }
+    }
+</script>
 
 <template>
     <body>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <span @click="closeImage()" class="close">&times;</span>
+            <img class="modal-content" id="img01">
+        </div>
         
         <p class = "header">Feed</p>
 
@@ -31,7 +54,7 @@
             <!-- Post Card Here -->
             <div v-for="post in postArray" class="card-div">
                 <div class="card">
-                    <img class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <img @click="imageClicked(post.Image);" class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
                         <small class="card-text">{{ post.Text }}</small>
                         <br><br>

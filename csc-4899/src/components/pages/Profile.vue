@@ -36,16 +36,7 @@
         
         <div class="card-columns"> 
             <!-- Post Card Here -->
-                <div v-for="post in postArray">
-
-<<<<<<< HEAD
-                    <div class="card">
-                        <img class="card-img-top" :src="post.Image" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">{{ post.Text }}</p>
-                        </div>
-                    </div>
-=======
+                
         <div v-for="post in postArray">
 
             <div class="card">
@@ -58,9 +49,9 @@
                     <br>
                     <small class="text-muted">{{post.Timestamp.toDate()}}</small>
                 </div>
->>>>>>> c6eb4e8a91254eb371d7f7cfe4c33a6eb8ef7102
             </div>
         </div>
+    </div>
 
     </body>
 </template>

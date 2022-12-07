@@ -28,12 +28,16 @@
     </div>
   </div>
   <div class="searchwrapper">
-    <input type="search" placeholder="Search Users" id = "search">
+    <input type="text" placeholder="Search Users" id = "search" v-model="searchEntry">
+    <button @click=searchUsers()>Search</button>
   </div>
+
   <div class="users">
+  <template user-card-template>
     <div class="card">
-      <div class="header">Name</div>
+      <div class="header"></div>
     </div>
+  </template>
   </div>
 </nav>
 
@@ -54,9 +58,18 @@
   import { onMounted, ref } from "vue";
   import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
   import { useRouter } from "vue-router";
+  import { getDocs, getDoc, collection, where, query } from "@firebase/firestore";
+import { parseStringStyle } from "@vue/shared";
 
   const router = useRouter();
   const isLoggedIn = ref(false);
+  
+
+  
+
+
+
+
 
   let auth;
   onMounted(() => {
@@ -75,6 +88,45 @@
       router.push("/login");
     });
   };
+  
+
+
+
+</script>
+<script>
+  import { getDocs, getDoc, collection, where, query } from "@firebase/firestore";
+  import { onMounted, ref } from "vue";
+  import { db } from "/src/main.js";
+  const searchEntry = ref("");
+
+
+  
+
+  
+  
+
+  const searchResult = [];
+
+
+
+  async function searchUsers() {
+    const Info = await getDocs(query(collection(db, "Users"), where("Username", "==", searchEntry.value)));
+    Info.forEach((doc) => {
+      searchResult.push(doc.data());
+    });
+
+    checkResult();
+  }
+  function checkResult(){
+    for (var i = 0; i < searchResult.length;i++) {
+      if (searchEntry.value.toLowerCase == searchResult[i].Username.toLowerCase) {
+        console.log(searchResult[i].Username);
+      }
+    }
+  }
+
+
+
 
 </script>
 
@@ -112,12 +164,13 @@ nav {
 nav li:hover {
   background-color:#6667AB;
 }
-div .searchwrapper {
+.searchwrapper {
   display: flex;
   flex-direction:column;
   margin-right:20px;
   float:right;
   gap:.25rem;
+  margin-top:1rem;
 }
 input {
   color: white;

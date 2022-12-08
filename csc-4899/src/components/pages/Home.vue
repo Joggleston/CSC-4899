@@ -25,14 +25,21 @@
           <p class="nav-link" @click="handleSignOut">Log Out</p>
         </li>
       </ul>
+      <form class="searchwrapper form-inline my-2 my-lg-0" @submit.prevent="routeProfile(searchUsers())">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search" v-model="searchEntry">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </div>
-  <div class="searchwrapper">
+
+  <!-- old nav bar -->
+  <!-- <div class="searchwrapper">
     <input type="text" placeholder="Search Users" id = "search" v-model="searchEntry">
     <div>
     <button @click=routeProfile(searchUsers())>Search</button>
     </div>
-  </div>
+  </div> -->
+
 </nav>
 
 <!-- This is the main site vue file thing, dont touch -->
@@ -169,7 +176,7 @@ nav li:hover {
   display: flex;
   flex-direction:column;
   margin-right:20px;
-  float:right;
+  /* float:right; */
   gap:.25rem;
   margin-top:1rem;
 }

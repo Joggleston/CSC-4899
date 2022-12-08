@@ -108,7 +108,7 @@ export default{
         </div>
 
         <!-- Create Comment -->
-        <p class = "header">Post Comment</p>
+        <p class = "header" style="margin-top: 25px;">Post Comment</p>
         <div class="form">
             <form class="create-form" @submit.prevent="createPost">
                 <textarea cols="30" rows="10" placeholder="Text Here..." v-model="postText" required></textarea>

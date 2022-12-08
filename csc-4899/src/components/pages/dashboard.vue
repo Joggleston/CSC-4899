@@ -3,21 +3,20 @@
     import { db } from "/src/main.js";
     
     const q = query(collection(db, "Posts"));
+    const c = query(collection(db, "Comments"));
 
     const Docs = await getDocs(q); 
     const postArray = [];
     
     Docs.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
         postArray.push([doc.data(),doc.id]);
     });
-
-    // post.Image.replace(/\\/g,'\\\\')
-    console.log(postArray[0].Image);
 
 
 </script>
 <script>
+    import { collection, query, getDocs } from "firebase/firestore";
     export default{
         methods: {
             imageClicked(img) {
@@ -32,17 +31,7 @@
                 var modal = document.getElementById("myModal");
                 modal.style.display = "none";
             },
-
-            passCommentData(uid) {
-                // console.log(uid);
-                myprop = theVariableThatYouWantToPass
-                this.$router.replace({name:'home', params:{myprop}});
-            },
-
-        },
-        props: {
-            uuid: String,
-        }   
+        }
     }
 </script>
 
@@ -72,8 +61,7 @@
                         <br>
                         <small class="card-muted">  Dislikes: {{ post[0].Dislikes }}</small>
                         <br>
-                        <a @click="passCommentData(post[1])" id="comments" class="card-muted">  Comments </a>
-                        <!-- <router-link id="comments" class="card-muted" to="/ShowPost">Comments</router-link> -->
+                        <router-link id="comments" class="card-muted" v-bind:to="('/show-post/' + post[1])">Comments</router-link>
                         <br>
                         <small class="text-muted">{{post[0].Timestamp.toDate().toLocaleString()}}</small>
                     </div>

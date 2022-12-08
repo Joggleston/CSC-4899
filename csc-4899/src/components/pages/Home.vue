@@ -53,7 +53,7 @@
   import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
   import { useRouter } from "vue-router";
   import { getDocs, getDoc, collection, where, query } from "@firebase/firestore";
-import { parseStringStyle, propsToAttrMap } from "@vue/shared";
+  import { parseStringStyle } from "@vue/shared";
 
   const router = useRouter();
   const isLoggedIn = ref(false);

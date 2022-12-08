@@ -18,19 +18,15 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/home", name: "Home", component: Home}, 
-
         { path: "/", redirect: "/dashboard", meta:{requiresAuth: true }}, //this should be the first page the user sees, default route view
-
         { path: "/login", name: "Login", component: Login},
-
         { path: "/create", name: "MakePost", component: MakePost, meta: { requiresAuth: true }}, 
         { path: "/topics/:id", name: "PostTopics", component: PostTopics}, 
-        { path: "/profile", name: "Profile", component: Profile, meta: {requiresAuth: true }, props: true}, 
+        { path: "/profile", name: "Profile", component: Profile, meta: {requiresAuth: true }, props: { profile: true }}, 
         { path: "/register", name: "Register", component: Register}, 
-        { path: "/show-post", name: "ShowPost", component: ShowPost, props: true}, 
+        { path: "/show-post/:id", name: "ShowPost", component: ShowPost}, 
         { path: "/show-topic/:id", name: "ShowTopic", component: ShowTopic},
         { path: "/bootstrap", name: "Bootstrap", component: Bootstrap},
-
         { path: "/dashboard", name: "Dashboard", component: Dashboard, meta: { requiresAuth: true }},
         { path: "/canvas", name: "Canvas", component: Canvas, meta: { requiresAuth: true }},
     ]

@@ -20,12 +20,13 @@
                     <img @click="imageClicked(post.Image);" id="myImg" class="card-img-top" :src="post.Image" alt="Card image cap">
                     <div class="card-body">
                         <small class="card-text">{{ post.Text }}</small>
-                        <br><br>
-                        <small class="card-text-un">{{ post.Username }}</small>
+                        <br>
+                    </div>
+                    <div class = "profile">
+                        <button class="card-text-un">{{ post.Username }}</button>
                     </div>
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ post.Likes }}</small>
-                        <br>
                         <small class="card-muted">  Dislikes: {{ post.Dislikes }}</small>
                         <br>
                         <small class="text-muted">{{post.Timestamp.toDate().toLocaleString()}}</small>
@@ -60,30 +61,47 @@
 </script>
 
 <script setup>
+
+
         import { collection, query, getDocs, where } from "firebase/firestore";
         import { db } from "/src/main.js";
         import { getAuth } from "firebase/auth";
         import { computed } from "@vue/reactivity";
+        import {useRouter} from "vue-router";
+        const router = useRouter();
+
+        
 
         //grabs current loggedin users id
         const auth = getAuth();
         var user = auth.currentUser;
+        var uniqueid = user.uid;
+        var result = null;
+        result = sessionStorage.getItem("result")
+        console.log(result);
+        if (result != null) {
+            uniqueid = result;
+            result = null;
+        }
+
+        
+
 
         const username = [];
-        const usernameQ = await getDocs(query(collection(db,"Users"), where("UUID","==",user.uid)));
+        const usernameQ = await getDocs(query(collection(db,"Users"), where("UUID","==",uniqueid)));
         usernameQ.forEach((doc) => {
             username.push(doc.data());
         });
 
         const postArray = [];
-        const postQ = await getDocs(query(collection(db,"Posts"), where("UUID","==",user.uid)));
+        const postQ = await getDocs(query(collection(db,"Posts"), where("UUID","==",uniqueid)));
 
         postQ.forEach((doc) => {
-            
             postArray.push(doc.data());
             console.log(doc.id, " => ", doc.data());
             
         });
+        
 
 </script>
 
@@ -107,13 +125,18 @@ p {
     background-color:#262d26;
 }
 .card-text-un {
+    background-color: #262d26;
     color:#7e80ef;
     font-weight:400;
-    -webkit-text-stroke:white;
     font-size:17px;
-    float:left;
-    text-align:left;
-    vertical-align: bottom;
+    float:center;
+    text-align:center;
+    vertical-align: center;
+    margin-left: 2px;
+    margin-bottom:2px;
+}
+.profile {
+    background-color: #5a5959;
 }
 /* image popout related */
 #myImg {

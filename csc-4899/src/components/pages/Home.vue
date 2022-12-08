@@ -29,15 +29,9 @@
   </div>
   <div class="searchwrapper">
     <input type="text" placeholder="Search Users" id = "search" v-model="searchEntry">
-    <button @click=searchUsers()>Search</button>
-  </div>
-
-  <div class="users">
-  <template user-card-template>
-    <div class="card">
-      <div class="header"></div>
+    <div>
+    <button @click=routeProfile(searchUsers())>Search</button>
     </div>
-  </template>
   </div>
 </nav>
 
@@ -59,17 +53,10 @@
   import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
   import { useRouter } from "vue-router";
   import { getDocs, getDoc, collection, where, query } from "@firebase/firestore";
-import { parseStringStyle } from "@vue/shared";
+import { parseStringStyle, propsToAttrMap } from "@vue/shared";
 
   const router = useRouter();
   const isLoggedIn = ref(false);
-  
-
-  
-
-
-
-
 
   let auth;
   onMounted(() => {
@@ -87,46 +74,61 @@ import { parseStringStyle } from "@vue/shared";
     signOut(auth).then(() => {
       router.push("/login");
     });
-  };
+  }; 
   
+  function routeProfile(x) {
+    var valid = false;
+    
+    x.then((flag) => {
+      if (flag == true) {
+        console.log(router.currentRoute.value.fullPath);
+        if (router.currentRoute.value.fullPath == '/profile') {
+          router.go();
+        }
+        router.push('/profile');
+      }
+    });   
+  }
+
 
 
 
 </script>
+
 <script>
   import { getDocs, getDoc, collection, where, query } from "@firebase/firestore";
   import { onMounted, ref } from "vue";
   import { db } from "/src/main.js";
+  import { useRouter } from "vue-router";
   const searchEntry = ref("");
-
-
-  
-
-  
-  
-
+  const router = useRouter();
   const searchResult = [];
+  var flag = false;
+
+  function checkResult(){
+    flag = false;
+    for (var i = 0; i < searchResult.length;i++) {
+      if (searchEntry.value.toLowerCase == searchResult[i].Username.toLowerCase) {
+        result = searchResult[i].UUID;
+        flag = true;
+      }
+    }
+
+    sessionStorage.setItem("result",result); 
+    
+  }
 
 
-
+  var result = null;
   async function searchUsers() {
     const Info = await getDocs(query(collection(db, "Users"), where("Username", "==", searchEntry.value)));
     Info.forEach((doc) => {
       searchResult.push(doc.data());
     });
-
     checkResult();
+    return flag;
   }
-  function checkResult(){
-    for (var i = 0; i < searchResult.length;i++) {
-      if (searchEntry.value.toLowerCase == searchResult[i].Username.toLowerCase) {
-        console.log(searchResult[i].Username);
-      }
-    }
-  }
-
-
-
+  
 
 </script>
 

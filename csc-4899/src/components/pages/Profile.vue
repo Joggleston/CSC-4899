@@ -17,19 +17,21 @@
             <!-- Post Card Here -->
             <div v-for="post in postArray" class="card-div">
                 <div class="card">
-                    <img @click="imageClicked(post.Image);" id="myImg" class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <img @click="imageClicked(post[0].Image);" id="myImg" class="card-img-top" :src="post[0].Image" alt="Card image cap">
                     <div class="card-body">
-                        <small class="card-text">{{ post.Text }}</small>
+                        <small class="card-text">{{ post[0].Text }}</small>
                         <br>
                     </div>
                     <div class = "profile">
-                        <button class="card-text-un">{{ post.Username }}</button>
+                        <button class="card-text-un">{{ post[0].Username }}</button>
                     </div>
                     <div class="card-footer">
-                        <small class="card-muted">Likes: {{ post.Likes }}</small>
-                        <small class="card-muted">  Dislikes: {{ post.Dislikes }}</small>
+                        <small class="card-muted">Likes: {{ post[0].Likes }}</small>
+                        <small class="card-muted">  Dislikes: {{ post[0].Dislikes }}</small>
                         <br>
-                        <small class="text-muted">{{post.Timestamp.toDate().toLocaleString()}}</small>
+                        <router-link id="comments" class="card-muted" v-bind:to="('/show-post/' + post[1])">Comments</router-link>
+                        <br>
+                        <small class="text-muted">{{post[0].Timestamp.toDate().toLocaleString()}}</small>
                     </div>
                 </div>
             </div>
@@ -93,12 +95,13 @@
             username.push(doc.data());
         });
 
+        //create array of database data
         const postArray = [];
         const postQ = await getDocs(query(collection(db,"Posts"), where("UUID","==",uniqueid)));
 
         postQ.forEach((doc) => {
-            postArray.push(doc.data());
-            console.log(doc.id, " => ", doc.data());
+            postArray.push([doc.data(),doc.id]);
+            // console.log(doc.id, " => ", doc.data());
             
         });
 
@@ -113,7 +116,7 @@
     font-weight:200;
     text-align: center;
     padding: 0px;
-    background-color: #9a9aa7;
+    background-color: #7e80ef;
     font-size:200%;
     float:center;
 }

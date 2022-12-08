@@ -1,6 +1,7 @@
 <script>
 import { collection, query, getDocs, where } from "firebase/firestore";
 import { db } from "/src/main.js";
+import router from "../../routes";
 
 export default{
     data() {
@@ -19,12 +20,21 @@ export default{
                 console.log(doc.data());
             })
         },
-        commentOnPost(textEntry) {
-
+        imageClicked(img) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            
+            modal.style.display = "block";
+            modalImg.src = img;
         },
         closeImage() { 
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
+        },
+        userProfile(result) {
+            // console.log(result)
+            sessionStorage.setItem("result",result);
+            router.push('/profile');
         },
     },
     created() {
@@ -51,11 +61,12 @@ export default{
                 <br> -->
 
                 <div class="card">
-                    <img v-if="comment.image" @click="imageClicked(comment.Image);" id="myImg" class="card-img-top" :src="comment.Image" alt="Card image cap">
+                    <img v-if="comment.Image" @click="imageClicked(comment.Image);" id="myImg" class="card-img-top" :src="comment.Image" alt="Card image cap">
                     <div class="card-body">
                         <small class="card-text">{{ comment.Text }}</small>
-                        <br><br>
-                        <small class="card-text">-{{ comment.Username }}</small>
+                    </div>
+                    <div class = "profile">
+                        <button class="card-text-ul" @click="userProfile(comment.UUID)">{{ comment.Username }}</button>
                     </div>
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ comment.Likes }}</small>

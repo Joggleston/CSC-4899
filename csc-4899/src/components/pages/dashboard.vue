@@ -17,7 +17,7 @@
 </script>
 <script>
     import { collection, query, getDocs } from "firebase/firestore";
-import router from "../../routes";
+    import router from "../../routes";
     export default{
         methods: {
             imageClicked(img) {

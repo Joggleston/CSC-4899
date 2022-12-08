@@ -52,19 +52,23 @@
         
         <p class = "header">Feed</p>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
 
             <!-- Post Card Here -->
             <div v-for="post in postArray" class="card-div">
                 <div class="card">
+
                     <img @click="imageClicked(post[0].Image);" id="myImg" class="card-img-top" :src="post[0].Image" alt="Card image cap">
+                    
                     <div class="card-body">
                         <small class="card-text">{{ post[0].Text }}</small>
                         <br>
                     </div>
+
                     <div class = "profile">
                         <button class="card-text-ul" @click="userProfile(post[0].UUID)">{{ post[0].Username }}</button>
                     </div>
+
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ post[0].Likes }}</small>
                         <small class="card-muted">  Dislikes: {{ post[0].Dislikes }}</small>
@@ -73,6 +77,7 @@
                         <br>
                         <small class="text-muted">{{post[0].Timestamp.toDate().toLocaleString()}}</small>
                     </div>
+
                 </div>
             </div>
 
@@ -90,7 +95,8 @@ p {
     color:white;
 }
 .card {
-    max-width:200px;
+    min-width:10000px;
+    max-width:20000px;
     margin:10px;
 }
 .card-body {
@@ -136,6 +142,7 @@ h2 {
 .card-div{
     display: flex;
     justify-content: center;
+    size:3000px;
 }
 .postimg {
     margin-left:10px;

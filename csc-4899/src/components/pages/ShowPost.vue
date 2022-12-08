@@ -98,7 +98,6 @@ export default{
                     </div>
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ comment.Likes }}</small>
-                        <br>
                         <small class="card-muted">  Dislikes: {{ comment.Dislikes }}</small>
                         <br>
                         <small class="text-muted">{{comment.Timestamp.toDate().toLocaleString()}}</small>

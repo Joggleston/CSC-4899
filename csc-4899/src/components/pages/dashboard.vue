@@ -32,13 +32,13 @@
                 var modal = document.getElementById("myModal");
                 modal.style.display = "none";
             },
-        }
-    }
 
-    function userProfile(result) {
-        console.log(result)
-        sessionStorage.setItem("result",result);
-        router.push('/profile');
+            userProfile(result) {
+                // console.log(result)
+                sessionStorage.setItem("result",result);
+                router.push('/profile');
+            },
+        }
     }
 </script>
 

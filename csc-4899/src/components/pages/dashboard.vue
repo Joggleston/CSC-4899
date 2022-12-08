@@ -78,7 +78,7 @@
 <style>
 @import '../css/main.css';
 .username{
-    color: ;
+    color: white;
 }
 .card-div{
     display: flex;

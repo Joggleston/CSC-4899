@@ -63,4 +63,6 @@ router.beforeEach(async (to, from, next) => { //happens before each route change
     }
 });
 
+
+
 export default router;

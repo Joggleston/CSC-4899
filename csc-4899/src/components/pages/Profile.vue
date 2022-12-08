@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <small class="card-text">{{ post.Text }}</small>
                         <br><br>
-                        <small class="card-text">-{{ post.Username }}</small>
+                        <small class="card-text-un">{{ post.Username }}</small>
                     </div>
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ post.Likes }}</small>
@@ -39,8 +39,9 @@
 </template>
 
 <script>
+
     export default{
-        props: ['myprop'],
+
         methods: {
             imageClicked(img) {
                 var modal = document.getElementById("myModal");
@@ -62,6 +63,7 @@
         import { collection, query, getDocs, where } from "firebase/firestore";
         import { db } from "/src/main.js";
         import { getAuth } from "firebase/auth";
+        import { computed } from "@vue/reactivity";
 
         //grabs current loggedin users id
         const auth = getAuth();
@@ -82,6 +84,7 @@
             console.log(doc.id, " => ", doc.data());
             
         });
+
 </script>
 
 <style>
@@ -90,7 +93,7 @@
     font-weight:200;
     text-align: center;
     padding: 0px;
-    background-color: #6667AB;
+    background-color: #9a9aa7;
     font-size:200%;
     float:center;
 }
@@ -102,6 +105,15 @@ p {
 }
 .card-body {
     background-color:#262d26;
+}
+.card-text-un {
+    color:#7e80ef;
+    font-weight:400;
+    -webkit-text-stroke:white;
+    font-size:17px;
+    float:left;
+    text-align:left;
+    vertical-align: bottom;
 }
 /* image popout related */
 #myImg {

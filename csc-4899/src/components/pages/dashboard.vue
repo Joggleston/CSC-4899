@@ -17,6 +17,7 @@
 </script>
 <script>
     import { collection, query, getDocs } from "firebase/firestore";
+import router from "../../routes";
     export default{
         methods: {
             imageClicked(img) {
@@ -32,6 +33,12 @@
                 modal.style.display = "none";
             },
         }
+    }
+
+    function userProfile(result) {
+        console.log(result)
+        sessionStorage.setItem("result",result);
+        router.push('/profile');
     }
 </script>
 
@@ -53,12 +60,13 @@
                     <img @click="imageClicked(post[0].Image);" id="myImg" class="card-img-top" :src="post[0].Image" alt="Card image cap">
                     <div class="card-body">
                         <small class="card-text">{{ post[0].Text }}</small>
-                        <br><br>
-                        <small class="card-text">-{{ post[0].Username }}</small>
+                        <br>
+                    </div>
+                    <div class = "profile">
+                        <button class="card-text-ul" @click="userProfile(post[0].UUID)">{{ post[0].Username }}</button>
                     </div>
                     <div class="card-footer">
                         <small class="card-muted">Likes: {{ post[0].Likes }}</small>
-                        <br>
                         <small class="card-muted">  Dislikes: {{ post[0].Dislikes }}</small>
                         <br>
                         <router-link id="comments" class="card-muted" v-bind:to="('/show-post/' + post[1])">Comments</router-link>
@@ -78,33 +86,38 @@
 .username{
     color: white;
 }
-#comments{
-    color: #6667AB;
-    text-decoration: underline;
-    font-weight: bold;
-}
-.card-div{
-    display: flex;
-    justify-content: center;
+p {
+    color:white;
 }
 .card {
-    /* display: inline-block !important; */
-    margin: 10px;
+    max-width:200px;
+    margin:10px;
 }
 .card-body {
     background-color:#5a5959;
+}
+.card-text-ul {
+    background-color: #262d26;
+    color:#7e80ef;
+    font-weight:400;
+    font-size:14px;
+    float:center;
+    text-align:center;
+    vertical-align: center;
+    margin-left: 2px;
+    margin-bottom:2px;
+}
+.profile {
+    background-color: #5a5959;
 }
 .card-title {
     color:#FFFFFF;
 }
 .card-text {
     color:#FFFFFF;
-    height:100px;
+
 }
-/* .card {
-    width:200px;
-    height:400px;
-} */
+
 h2 {
     text-align:center;
     color: #6667AB;
@@ -115,6 +128,15 @@ h2 {
     display:grid;
     column-count: 3;
 }
+#comments{
+    color: #6667AB;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.card-div{
+    display: flex;
+    justify-content: center;
+}
 .postimg {
     margin-left:10px;
     margin-right:10px;
@@ -124,6 +146,7 @@ h2 {
     border-style:solid;
     float:left;
 }
+
 .post h2 {
     color:#FFFFFF;
     font-style: bolder;
@@ -144,7 +167,6 @@ h2 {
     text-align: center;
     padding: 0px;
     background-color: #6667AB;
-    font-size:200%;
     float:center;
 }
 @media (max-width: 576px) {  

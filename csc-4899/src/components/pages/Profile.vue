@@ -101,6 +101,8 @@
             console.log(doc.id, " => ", doc.data());
             
         });
+
+        
         
 
 </script>
@@ -128,13 +130,14 @@ p {
     background-color: #262d26;
     color:#7e80ef;
     font-weight:400;
-    font-size:17px;
+    font-size:14px;
     float:center;
     text-align:center;
     vertical-align: center;
     margin-left: 2px;
     margin-bottom:2px;
 }
+
 .profile {
     background-color: #5a5959;
 }

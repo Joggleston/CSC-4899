@@ -6,14 +6,11 @@
 
     const Docs = await getDocs(q); 
     const postArray = [];
-    const userArray = [];
     
     Docs.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
-        postArray.push(doc.data());
+        postArray.push([doc.data(),doc.id]);
     });
-
-    console.log(userArray)
 
     // post.Image.replace(/\\/g,'\\\\')
     console.log(postArray[0].Image);
@@ -35,7 +32,17 @@
                 var modal = document.getElementById("myModal");
                 modal.style.display = "none";
             },
-        }
+
+            passCommentData(uid) {
+                // console.log(uid);
+                myprop = theVariableThatYouWantToPass
+                this.$router.replace({name:'home', params:{myprop}});
+            },
+
+        },
+        props: {
+            uuid: String,
+        }   
     }
 </script>
 
@@ -54,18 +61,21 @@
             <!-- Post Card Here -->
             <div v-for="post in postArray" class="card-div">
                 <div class="card">
-                    <img @click="imageClicked(post.Image);" id="myImg" class="card-img-top" :src="post.Image" alt="Card image cap">
+                    <img @click="imageClicked(post[0].Image);" id="myImg" class="card-img-top" :src="post[0].Image" alt="Card image cap">
                     <div class="card-body">
-                        <small class="card-text">{{ post.Text }}</small>
+                        <small class="card-text">{{ post[0].Text }}</small>
                         <br><br>
-                        <small class="card-text">-{{ post.Username }}</small>
+                        <small class="card-text">-{{ post[0].Username }}</small>
                     </div>
                     <div class="card-footer">
-                        <small class="card-muted">Likes: {{ post.Likes }}</small>
+                        <small class="card-muted">Likes: {{ post[0].Likes }}</small>
                         <br>
-                        <small class="card-muted">  Dislikes: {{ post.Dislikes }}</small>
+                        <small class="card-muted">  Dislikes: {{ post[0].Dislikes }}</small>
                         <br>
-                        <small class="text-muted">{{post.Timestamp.toDate().toLocaleString()}}</small>
+                        <a @click="passCommentData(post[1])" id="comments" class="card-muted">  Comments </a>
+                        <!-- <router-link id="comments" class="card-muted" to="/ShowPost">Comments</router-link> -->
+                        <br>
+                        <small class="text-muted">{{post[0].Timestamp.toDate().toLocaleString()}}</small>
                     </div>
                 </div>
             </div>
@@ -79,6 +89,11 @@
 @import '../css/main.css';
 .username{
     color: white;
+}
+#comments{
+    color: #6667AB;
+    text-decoration: underline;
+    font-weight: bold;
 }
 .card-div{
     display: flex;

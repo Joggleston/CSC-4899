@@ -1,7 +1,7 @@
 <template>
   <body>
 
-  <nav class="navbar navbar-expand-lg" v-if="isLoggedIn">
+  <nav class="fixed-top navbar navbar-expand-lg" v-if="isLoggedIn">
   <div class="container-fluid">
     <a class="navbar-brand">Canvost</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,8 @@
   </div> -->
 
 </nav>
+
+<div style="margin-top: 56px;"></div>
 
 <!-- This is the main site vue file thing, dont touch -->
 <Suspense>

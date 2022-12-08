@@ -25,7 +25,7 @@
           <p class="nav-link" @click="handleSignOut">Log Out</p>
         </li>
       </ul>
-      <form class="searchwrapper form-inline my-2 my-lg-0" @submit.prevent="routeProfile(searchUsers())">
+      <form class="searchwrapper my-2 my-lg-0" @submit.prevent="routeProfile(searchUsers())">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search" v-model="searchEntry">
         <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -42,7 +42,7 @@
 
 </nav>
 
-<div style="margin-top: 56px;"></div>
+<div style="margin-top: 72px;"></div>
 
 <!-- This is the main site vue file thing, dont touch -->
 <Suspense>
@@ -142,6 +142,9 @@
 
 <style>
 @import '../css/main.css';
+.navbar {
+  min-height: 72px;
+}
 body { 
   background: #262d26 !important; 
   font-family: "Roboto", sans-serif !important;  
@@ -177,7 +180,7 @@ nav li:hover {
 
 .searchwrapper {
   display: flex;
-  flex-direction:column;
+  flex-direction: row;
   margin-right:20px;
   /* float:right; */
   gap:.25rem;

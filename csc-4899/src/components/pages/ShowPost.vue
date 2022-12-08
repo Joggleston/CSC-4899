@@ -85,7 +85,7 @@ export default{
         <p class="header">Comments</p>
         
         <!-- POST CARDS -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
             <div v-for="comment in commentArray" class="card-div">
 
                 <div class="card">
